@@ -89,6 +89,7 @@
   year   = {2013},
 }
 
+<<<<<<< HEAD
 @Article{Shim2017Effective,
   author  = {Shim, Kyu Seok and Yoon, Sung Ho and Sija, Baraka D. and Park, Jun Sang and Cho, Kyunghee and Kim, Myung Sup},
   title   = {Effective behavior signature extraction method using sequence pattern algorithm for traffic identification},
@@ -110,6 +111,9 @@
   publisher = {Springer Berlin Heidelberg},
   abstract  = {Well-known port numbers can no longer be used to reliably identify network applications. There is a variety of new Internet applications that either do not use well-known port numbers or use other protocols, such as HTTP, as wrappers in order to go through firewalls without being blocked. One consequence of this is that a simple inspection of the port numbers used by flows may lead to the inaccurate classification of network traffic. In this work, we look at these inaccuracies in detail. Using a full payload packet trace collected from an Internet site we attempt to identify the types of errors that may result from port-based classification and quantify them for the specific trace under study. To address this question we devise a classification methodology that relies on the full packet payload. We describe the building blocks of this methodology and elaborate on the complications that arise in that context. A classification technique approaching 100{\%} accuracy proves to be a labor-intensive process that needs to test flow-characteristics against multiple classification criteria in order to gain sufficient confidence in the nature of the causal application. Nevertheless, the benefits gained from a content-based classification approach are evident. We are capable of accurately classifying what would be otherwise classified as unknown as well as identifying traffic flows that could otherwise be classified incorrectly. Our work opens up multiple research issues that we intend to address in future work.},
   isbn      = {978-3-540-31966-5},
+=======
+@Article{,
+>>>>>>> e1c4729349ebb8950ba71811675366dfb3543d94
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
