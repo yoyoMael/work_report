@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Review.aux
+The style file: plain.bst
+Database file #1: ../../Reference/reference_flow_analysis.bib.bib
+Warning--I didn't find a database entry for "moore2013discriminators"
+Warning--empty journal in miller2018multilayer
+Warning--empty year in miller2018multilayer
+Warning--empty institution in moore2005discriminators
+You've used 18 entries,
+            2118 wiz_defined-function locations,
+            598 strings with 7399 characters,
+and the built_in function-call counts, 6434 in all, are:
+= -- 644
+> -- 320
+< -- 5
++ -- 127
+- -- 108
+* -- 448
+:= -- 1071
+add.period$ -- 56
+call.type$ -- 18
+change.case$ -- 105
+chr.to.int$ -- 0
+cite$ -- 21
+duplicate$ -- 247
+empty$ -- 467
+format.name$ -- 108
+if$ -- 1346
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 13
+newline$ -- 92
+num.names$ -- 36
+pop$ -- 111
+preamble$ -- 1
+purify$ -- 90
+quote$ -- 0
+skip$ -- 182
+stack$ -- 0
+substring$ -- 374
+swap$ -- 68
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 72
+warning$ -- 3
+while$ -- 61
+width$ -- 20
+write$ -- 197
+(There were 4 warnings)
