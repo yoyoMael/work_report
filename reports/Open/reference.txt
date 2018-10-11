@@ -1,0 +1,18 @@
+[1].柏骏, 夏靖波, 吴吉祥,等. 实时网络流量分类研究综述[J]. 计算机科学, 2013, 40(9):8-15.
+[2].潘吴斌, 程光, 郭晓军,等. 网络加密流量识别研究综述及展望[J]. 通信学报, 2016, 37(9):154-167.
+[3].Boutaba, Raouf, et al. "A comprehensive survey on machine learning for networking: evolution, applications and research opportunities." Journal of Internet Services and Applications 9.1 (2018): 16.
+[4].Roughan M, Sen S, Spatscheck O, et al. Class-of-service mapping for QoS:a statistical signature-based approach to IP traffic classification[C]// ACM SIGCOMM Conference on Internet Measurement. ACM, 2004:135-148.
+[5].Mcgregor A, Hall M, Lorier P, et al. Flow Clustering Using Machine Learning Techniques[C]// International Passive and Active Network Measurement International Workshop, PAM 2004, April 19-20, 2004, Proceedings. DBLP, 2004:205-214.
+[6].Moore, Andrew, Denis Zuev, and Michael Crogan. Discriminators for use in flow-based classification. 2013.
+[7].ACETO, Giuseppe, CIUONZO, Domenico, MONTIERI, Antonio, et al. Mobile Encrypted Traffic Classification Using Deep Learning.
+[8].Yuan, Ruixi, et al. "An SVM-based machine learning method for accurate internet traffic classification." Information Systems Frontiers 12.2 (2010): 149-156.
+[9].Bujlow, Tomasz, Tahir Riaz, and Jens Myrup Pedersen. "A method for classification of network traffic based on C5. 0 Machine Learning Algorithm." Computing, Networking and Communications (ICNC), 2012 International Conference on. IEEE, 2012.
+[10.]Peng, Lizhi, Bo Yang, and Yuehui Chen. "Hierarchical RBF neural network using for early stage internet traffic identification." Computational Science and Engineering (CSE), 2014 IEEE 17th International Conference on. IEEE, 2014.
+[11.]Draper-Gil, Gerard, et al. "Characterization of Encrypted and VPN Traffic using Time-related." Proceedings of the 2nd international conference on information systems security and privacy (ICISSP). 2016.
+[12.]Lashkari, Arash Habibi, et al. "Characterization of Tor Traffic using Time based Features." ICISSP. 2017.
+[13.]Qiu, Zhicong, David J. Miller, and George Kesidis. "Flow based botnet detection through semi-supervised active learning." Acoustics, Speech and Signal Processing (ICASSP), 2017 IEEE International Conference on. IEEE, 2017.
+[14.]Wang, Wei, et al. "Malware traffic classification using convolutional neural network for representation learning." Information Networking (ICOIN), 2017 International Conference on. IEEE, 2017.
+[15.]徐鹏, 刘琼, 林森. 基于支持向量机的Internet流量分类研究[J]. 计算机研究与发展, 2009, 46(3):407-414.
+[16.]张震, 汪斌强, 李向涛,等. 基于近邻传播学习的半监督流量分类方法[J]. 自动化学报, 2013, 39(7):1100-1109.
+[17.]潘吴斌,程光,郭晓军,王艳.基于选择性集成策略的嵌入式网络流特征选择[J].计算机学报,2014,37(10):2128-2138.
+[18.]曹杰. 基于SVM的网络流量特征降维与分类方法研究[D]. 吉林大学, 2017.
