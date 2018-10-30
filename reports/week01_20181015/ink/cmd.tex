@@ -1,0 +1,50 @@
+%-------------------------------------------------------------------------
+%
+% Latex-Beamer theme for non-commercial/private use
+%
+%
+% Author: Xian Qiu
+% Date: May 1, 2015
+% Version: 1.1beta
+%
+% ------------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------------
+% title page
+%-------------------------------------------------------------------------
+\renewcommand{\subtitle}[1]{\def\insert@subtitle{#1}}
+\renewcommand{\institute}[1]{\def\insert@institute{#1}}
+\renewcommand{\date}[1]{\def\insert@date{#1}}
+\newcommand{\email}[1]{\def\insertemail{#1}}
+\newcommand{\inframeauthor}[1]{\def\insertinframeauthor{#1}}
+\newcommand{\inframeinstitute}[1]{\def\insertinframeinstitute{#1}}
+
+
+%-------------------------------------------------------------------------
+% Inner frame
+%-------------------------------------------------------------------------
+\definecolor{pink}{rgb}{0.886, 0.435, 0.667}
+\definecolor{green}{rgb}{0, 0.49, 0.478}
+\definecolor{blue}{rgb}{0.18, 0.2, 0.529}
+\definecolor{brown}{rgb}{0.4, 0.208, 0.192}
+\definecolor{gray1}{rgb}{0.125, 0.125, 0.125}
+\definecolor{gray2}{rgb}{0.157, 0.157, 0.157}
+\definecolor{green2}{rgb}{0.16862745098039217,0.4,0.19607843137254902}
+\definecolor{blue2}{rgb}{0,0.40784313725490196,0.6352941176470588}
+\definecolor{brown2}{rgb}{0.6235294117647059,0.2901960784313726,0}
+\newcommand{\tblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\tred}[1]{\textcolor{pink}{#1}}
+\newcommand{\tgray}[1]{\textcolor{gray}{#1}}
+\newcommand{\tblack}[1]{\textcolor{black}{#1}}
+\newcommand{\tskip}[1]{\\[#1 pt]}
+
+
+
+%-------------------------------------------------------------------------
+% math
+%-------------------------------------------------------------------------
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}

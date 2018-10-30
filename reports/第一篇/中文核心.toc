@@ -1,0 +1,14 @@
+\contentsline {subsection}{\numberline {0.1}当前网络环境分析}{1}{subsection.0.1}
+\contentsline {section}{\numberline {1}引言}{1}{section.1}
+\contentsline {section}{\numberline {2}基于集成学习的流量分类方法}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}网络流量数据集}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}LightGBM算法}{2}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}重采样算法}{3}{subsection.2.3}
+\contentsline {section}{\numberline {3}网络流量分类中的主要问题}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}针对特定协议或应用类型的分类问题}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}数据不平衡问题的处理}{4}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}重采样结合GBDT}{5}{subsubsection.3.2.1}
+\contentsline {subsection}{\numberline {3.3}特征选择算法}{6}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}特征选择算法}{6}{subsubsection.3.3.1}
+\contentsline {subsection}{\numberline {3.4}其他方面}{6}{subsection.3.4}
+\contentsline {section}{\numberline {4}总结}{6}{section.4}

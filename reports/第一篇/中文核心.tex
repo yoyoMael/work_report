@@ -1,0 +1,116 @@
+\documentclass[a4papper]{article}
+\title{}
+\usepackage{color}
+\usepackage{ctex}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{mathtools}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{indentfirst} %段落自动缩进
+\usepackage{geometry}  %页边距
+\usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{txfonts}
+\usepackage{setspace}
+\usepackage{CJK,CJKnumb}
+\usepackage[colorlinks, citecolor=black, pagebackref,linkcolor=black]{hyperref}%backref表示反向引用，点击文献名称可以返回引用页
+\usepackage{fancyhdr} % 添加页眉页脚
+\pagestyle{fancy}%设置页眉和页脚
+\lhead{}
+\chead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+%\renewcommand{\headrulewidth}{0pt} %改为0pt即可去掉页眉下面的横线
+%\renewcommand{\footrulewidth}{0pt} %改为0pt即可去掉页脚上面的横线 0.4pt
+\usepackage[raggedleft]{titlesec} %设置标题
+\usepackage{textcomp}
+
+\newcommand{\kai}{\CJKfamily{kai}}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}%文献上标
+
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\tablename}{Table 1.}
+\renewcommand{\thesubfigure}{（\alph{subfigure}}
+
+
+\titleformat{\section}{\center\Huge\bfseries}{\thesection .}{.5em}{}%定义section样式
+\titleformat{\subsection}{\raggedright\Large\bfseries}{\thesubsection .}{.5em}{}
+\titleformat{\subsubsection}{\raggedright\large\bfseries}{\thesubsubsection .}{.5em}{}
+
+\bibliographystyle{plain}
+
+\geometry{left=3cm,top=3cm,bottom=4cm,right=3cm}
+\title{基于集成学习的网络流量分类方法}
+
+\author{网络流量分类和特征提取研究内容小结\\\\
+Wu You\\
+}
+\begin{document}
+\maketitle
+\tableofcontents
+\thispagestyle{empty}%取消此页页眉和页脚
+\newpage
+\setcounter{page}{1}%将此页页码计数设置为1
+\setcounter{section}{0}%在此处将section计数设置为0，下个section将为1号
+\section*{摘要}
+\par\setlength{\parindent}{2em} %设置段落缩进
+在利用机器学习的流量分类中，存在数据的不均衡问题。本文首先对不同机器学习算法进行了对比，之后使用集成机器学习与数据重采样相结合的方法，对不均衡数据进行了分类。对比结果表明，集成机器学习算法具有良好的分类效果，同时计算速度较快。直接应用集成机器学习算法进行流量分类可达到95\%以上的准确率，在结合了重采样方法后，整体准确率持平，但对于少数类样本的分类精度和召回率均提高了10\%以上。
+\section*{Abstract}
+\par\setlength{\parindent}{2em} %设置段落缩进
+The imbalance of data is a general problem in the classification of traffic flow using machine learning. We compared different machine learning algorithm and then combined ensemble learning algorithm with resampling techniques to classify flow data. The comparison result shows that the ensemble learning outerperforms other algorithms and has a relatively low time consumption. Using merely ensemble learning can achieve 95\% accuracy, but the recall and precision of minor classes are relatively low. With the combination of ensemble learning and resampling, the accuracy stays the same level but the recall and precision for the minor classes increases more than 10\%.
+\section{引言}
+\par\setlength{\parindent}{2em} %设置段落缩进
+网络流量分类是网络监管的基础工作，随着网络环境的不断扩张发展，网络信息监管、服务质量控制以及异常检测等工作都需要基于流量分类来提高效率、降低成本。传统的流量分类方法基于深度包检测（Deep Packet Inspection，DPI），通过人工提取数据包中的特征序列来形成特征库，而随着流量种类的增多、数量的增加，特征库的更新维护成本在不断增加，同时这种方法也无法应对未知和加密流量。因此，基于机器学习的流量分类方法开始受到关注。机器学习是一类分类或回归算法的总称，其核心思想是通过现有数据形成一个分类或回归模型，从而实现对之后数据的准确处理。机器学习算法已经在多个领域得到了应用，并取得了不错的成果。
+\par\setlength{\parindent}{2em} %设置段落缩进
+基于机器学习的网络流量分类研究开始于2004年，。2005年，Moore等人完成了流量数据的收集处理，从流量数据中提取出了248中用于训练的数据特征，并使用改进的朴素贝叶斯算法对流量进行了分类，这一系列工作为此后的很多流量分类研究提供了参考。之后的研究中更多着眼于解决流量分类中特定的的问题，如算法提速、新型协议的识别、以及分类机制的改进等，其中还包含了流量数据的不平衡问题。数据不平衡问题指的是全部数据中不同类别的样本数量相差巨大，该问题在多个领域内存在。数据不平衡的出现会使得分类算法在训练过程中产生偏差，进而导致其分类结果偏向于多数类，少数类的分类准确率降低。而在网络安全领域内，由于网络行为和数据中的大部分均属于正常范畴，异常和恶意数据样本较少，因此数据不平衡的问题也十分突出。
+\par\setlength{\parindent}{2em} %设置段落缩进
+样本量不均衡的问题在很多领域内存在，是机器学习领域的十大问题之一，由于某类样本占比较大，即使在训练过程中将其它类别误分为此类，也不会对优化过程产生影响。所以种现象的发生会导致利用数据训练得到的模型产生偏向性，即对多数类的分类效果较好，甚至倾向于将其它类别的样本划分到此类中。在网络安全及管理问题中，我们常常需要更多地关注少数类别的流量，因此需要针对数据不平衡的问题进行优化，以提高少数类样本的识别率。
+\par\setlength{\parindent}{2em} %设置段落缩进
+目前在网络流量分类中主要使用特征选择的方法，还有基于代价敏感的方法和重抽样的方法来处理样本不均衡的问题。相比另外两种方法，特征选择的方法没有明显的缺点，但目前也不能很好地从理论上说明其有效性，并且，特征选择的方法也用于优化训练结果，又是一项较为耗时的工作，在这一步很难同时兼顾两方面。基于代价敏感的方法是一种十分有效的方法，但其效果取决于对代价本身的定义，而目前对于代价的定义并没有可遵循的规则，因此实际应用较少。重抽样的方法则回避了以上二者的缺点，同时在一些实验中也证明了其有效性。Zhong等人于2009年将重采样同决策树和神经网络分别结合，对P2P流量进行了分类，研究结果证明了重采样方法在网络流量分类问题中的有效性。Liu等人则对包括重采样在内的三种数据不平衡的修正方法进行了对比，并以此说明了重采样方法相对另外两种方法的优势。而这些研究工作都只应用了简单的机器学习算法，本文中则选择将重采样和新兴的集成学习算法相结合，得到了更加精确的分类效果。
+\section{基于集成学习的流量分类方法}
+\par\setlength{\parindent}{2em} %设置段落缩进
+采用RES-LGBM对网络流量进行分类的核心思想是对数据集进行预处理和特征筛选，之后采用重采样算法修正数据的不平衡性，再利用梯度增强树算法对处理后的数据进行训练，最终完成对流量的分类。
+\subsection{网络流量数据集}
+\par\setlength{\parindent}{2em} %设置段落缩进
+为了确保研究工作的有效性，需要使用可靠的数据集。本文所使用的数据集是于2005年由剑桥大学的Moore等人采集的流量数据。作者采集了1000个用户在24小时内的流量数据，对其中每条TCP双向流进行特征提取，最终得到377526个数据样本。其中样本共分为12类，每个样本拥有249个属性，其中最后一项属性为样本的类别。样本的分布信息如表所示。
+\par\setlength{\parindent}{2em} %设置段落缩进
+可以看出，该数据集中WWW类占据了86.906\%的比例，而其他类别的样本则相对较少，存在数据不均衡的问题。
+\subsection{LightGBM算法}
+\par\setlength{\parindent}{2em} %设置段落缩进
+集成学习算法的原理是将多个弱分类器进行结合，即使每个分类器都只有较低的准确率，也能形成一个效果较强的分类器，从而达到较好的分类效果。由于集成学习算法的决策结果是多个分类器共同形成的，因此能够有效避免传统算法存在的过拟合问题，多个分类器共同决策的机制也有效地避免了部分噪声对于整体的影响。
+\par\setlength{\parindent}{2em} %设置段落缩进
+LightGBM（LGBM）基于梯度增强树算法，于2017年提出，属于集成学习算法的一种，该算法主要优化了运行速度，同时几乎没有降低算法准确率。梯度增强树算法集成了多个回归树，回归树由决策树算法衍生而来，其节点的分裂方式和决策树相同，但对每个叶子节点赋予了分值。通过将集合中多个回归树的分值相加，即可得到最终的结果。但由于需要对多个子树进行训练，梯度增强树算法的运行速度低于传统的决策树，而LGBM则通过一系列优化手段，使其运行速度得到了很大提升，主要的优化手段是基于梯度的单边采样（Gradient-based One Side Sampling，GOSS）和互斥特征捆绑（Exclusive Feature Bundling，EFB）以及随机森林算法中所使用的列采样方法，并利用直方图算法来快速计算节点分裂指标的近似值。在训练过程中，需要利用梯度对模型进行更新，而梯度较小的样本对模型的影响也相对较小。而以上优化手段中较为重要的GOSS就是计算梯度后，在梯度低于阈值的样本中只抽取部分进行训练，减少了需要训练的样本量，而舍弃的样本对模型的更新影响不大，因此最终模型仍能保持与原来相当的分类效果，同时由于该方法舍弃了部分样本，也有助于防止过拟合的发生。
+\subsection{重采样算法}
+\par\setlength{\parindent}{2em} %设置段落缩进
+重抽样方法就是利用数据之间的相关性，通过生成或删除样本的方式来改变样本比例，分为过采样、欠采样以及将二者相结合的方法。其中欠采样方法指的是通过随机的方式或根据某种规则，剔除部分多数类样本，从而使各类样本的比例接近平衡，这种方法的优点在于它可以在修正数据分布比例的同时降低运算量。它改变了样本的分布，同时在欠采样的过程中可能丢失部分重要信息，一些先进的欠采样算法可以减少一定的信息丢失。与欠采样相对的过采样方法，指的是重复使用部分少数类样本或根据原有样本生成相似数据来增加少数类样本的比例。虽然一些研究者认为这种方法会改变样本的分布，也有可能造成过拟合，但是与集成学习算法的结合可以削弱这些影响。首先，虽然样本的分布被改变，但树算法的理论是直接对分类可能性进行建模，而无需对样本分布进行假设，故样本分布的改变并不影响LGBM的分类效果。其次，LGBM算法在生成每一棵树时会选取样本的部分属性，并从样本中随机抽取一部分用于训练以增加子树的多样性，在此过程中若某类样本所占比例较小，则有可能在大部分树的训练过程中该类样本很少或并未得到训练，进而造成整体误差。使用过采样的方法能够使得少数类的比例增加，这样就能够保证该类样本在多数子树的生成过程中得到足够的训练。虽然这样可能导致部分样本在训练过程中重复出现，但由于LGBM算法中使用了GOSS来减少过拟合并提升运算效率，即使重复出现已经得到训练的样本也不会对模型造成很大影响，因此可以很好地避免过拟合的问题。
+\section{实验结果与分析}
+\subsection{算法对比}
+\par\setlength{\parindent}{2em} %设置段落缩进
+为了得到更好、更可信的分类效果，本文首先将数据集分为训练集、测试集和验证集三部分，其中训练集用于训练模型，而验证集则用于优化算法的参数和寻找最优特征集合，测试集则用于最终测试算法的分类效果。之后我们根据此前的研究成果，结合各特征的信息熵分析，初步确定了30个候选特征。
+\par\setlength{\parindent}{2em} %设置段落缩进
+本文首先进行了不同类算法的初步对比，为了确保对比结果的客观性，这一步中没有进行过多的算法参数调整，各算法中数据特征也全部使用预选出的30个特征，因此该对比中没有划分验证集，对比的指标为算法的分类准确率和运行时间。
+\par\setlength{\parindent}{2em} %设置段落缩进
+其中可以看出，在使用线性核函数时，SVM算法的分类效果很差，而使用RBF核函数时，运行时间较长，分类效果也不是很好，这也可能与参数的优化不足有关。而对于朴素贝叶斯算法，其初次分类效果较好，速度最快，但由于其严重依赖概率假设，在第二个数据集中的效果大幅下降。神经网络算法的效果较好，但其消耗时间较长。由于网络流量数据的样本量较大，导致KNN算法的计算量几句增加，因此该算法不适用于本领域。另外还有同属于集成学习算法的随机森林和XGBoost算法，可以看出其速度均慢于LGBM。根据以上结果，我们可以总结出在网络流量的分类中，相对于其他传统算法以及集成学习算法，LGBM算法能发挥更好的效果。
+\par\setlength{\parindent}{2em} %设置段落缩进
+通过上述实验结果还可以看出，在网络流量分类中，由于数据的类间不平衡，导致算法对少数类的分类效果与多数类相差甚远，针对这一点，本文进行了特征集合的优化、算法参数的调整以及数据不平衡性的修正，以达到最佳分类效果。
+\par\setlength{\parindent}{2em} %设置段落缩进
+首先进行了特征集合的优化，由于LGBM中的子分类器回归树算法，其节点分裂方式与决策树相近，故本文在特征优化中使用决策树代替LGBM。使用的特征优化算法为加N去R算法，该算法首先确定一个特征构成初始的最优集合，其余特征构成备选特征集合，在每次迭代中都会从备选特征集合中随机选择N个加入集合中，再从集合中选择R个特征移出到备选特征集合，最终得到分类效果最优的特征集合如表中所示。在参数优化过程中，首先在较大范围对每个参数分别内进行搜索，再根据搜索结果，在最佳参数附近的小范围内进行网格搜索，最终取得一组最优参数，结果表明在本实验中参数对算法各项指标的影响在0.1\%以内。
+\par\setlength{\parindent}{2em} %设置段落缩进
+在确定了算法和数据特征后，本文使用不同的采样算法对数据进行重采样，并对最终效果进行了对比。本实验中所使用的算法包含欠采样算法中的RUS和Tomek-link，以及过采样算法中的ROS、SMOTE算法，以及将二者相结合的SMOTE-Tomek算法，每种算法最终都使得WWW类和其它类样本数量的比例为3:1，对比结果如图所示 。
+\par\setlength{\parindent}{2em} %设置段落缩进
+根据以上结果，我们可以看出，虽然整体的准确率变化较小，ROS、SMOTE和SMOTE-Tomek算法可以使LGBM算法对于少数类的召回率和精度有明显提升。这三种算法都提高了少数类样本的比例，从而得到了充分的数据进行训练，同时LGBM具有不易产生过拟合的特点，即使出现重复数据也不会对分类效果产生太大影响，因此以上算法可以取得良好的效果。而相对地，应用RUS和Tomek-link算法则无法带来较明显的提升，因为欠采样算法仅降低了多数类样本的比例，对少数类数据不充足的问题没有帮助，虽然欠采样算法可以减少训练时间，但结果表明LGBM的训练时间对样本量变化的敏感较低，时间。值得一提的是，作为一种简单快速的重采样算法，ROS可以取得与SMOTE和SMOTE-Tomek相当的效果，一方面是由于SMOTE-Tomek中的欠采样对模型效果没有提升，另一方面也可能是由于SMOTE算法采用插值方式构造的数据无法很好地拟合真实样本特征的取值分布。
+
+\section{总结与展望}
+ \par\setlength{\parindent}{2em} %设置段落缩进
+ 本文中使用了
+% 随着互联网规模的迅速扩大，出现了许多新型网络应用，网络安全问题也日益突出，这给网络的管理工作带来了挑战，对网络流量进行有效分类可以帮助有针对性地进行各类管理工作。流量特征的提取方法直接决定了分类的精度和效率，而由于当前网络的多边性，基于人工进行特征提取的方法已经无法满足工作需求，因此需要研究特征的自动提取技术，最终目标是实现流量的自动、准确分类，并确保分类系统的实时更新以保持其健壮性。本周总结了网络流量分类的组成内容，并总结了部分相关研究工作的亮点与不足。接下来计划首先从DPI方法入手，通过序列模式挖掘算法实现数据分类，深入理解算法，并继续阅读文献，寻找研究方向。
+
+
+%\[\includegraphics[width=10cm]{../../Desktop/sb/1}\] 图片
+\bibliography{../../Reference/reference_flow_analysis.bib}
+\end{document}
